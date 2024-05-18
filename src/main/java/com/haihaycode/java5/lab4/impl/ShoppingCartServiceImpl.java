@@ -14,7 +14,7 @@ import java.util.Map;
 @SessionScope
 
 public class ShoppingCartServiceImpl  implements ShoppingCartService {
-    Map<Integer, Item> map = new HashMap<>();
+    Map<Integer, Item> map = new HashMap<>();//mỗi phiên người dùng sẽ có giỏ hàng riêng biệt
 
     @Override
     public Item add(Integer id) {

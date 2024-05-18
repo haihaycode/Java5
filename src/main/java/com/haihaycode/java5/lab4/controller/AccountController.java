@@ -33,7 +33,7 @@ public class AccountController {
         if (un.trim().equals("haipro1907") && pw.trim().equals("123")) {
 
             sessionService.set("username", un);
-            if (rm==true) {
+            if (rm) {
                 cookieService.add("user", un, 10);
             }else{
                 cookieService.remove("user");

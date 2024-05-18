@@ -19,10 +19,7 @@ public class ItemController {
         model.addAttribute("items", DB.items.values());
         return "lab4/item/index";
     }
-    public String cartView(Model model) {
-        model.addAttribute("items", DB.items.values());
-        return "lab4/item/index";
-    }
+
     @ModelAttribute("totalItemsInCart")
     public int getCount(){
         return shoppingCartService.getCount();
