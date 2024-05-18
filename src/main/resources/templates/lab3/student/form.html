@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <h2 class="mb-4">Student Form - Lab 3</h2>
+    <div th:if="${message}" th:class="'alert alert-' + ${messageType}" role="alert">
+        <span th:text="${message}"></span>
+    </div>
+    <form th:action="@{/student/save}" th:object="${sv}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="Enter your name" />
+            <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" th:field="*{email}" id="email" class="form-control" placeholder="Enter your email" />
+            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+        <div class="mb-3">
+            <label for="marks" class="form-label">Marks:</label>
+            <input type="number" th:field="*{marks}" id="marks" class="form-control" placeholder="Enter your marks" />
+            <div class="text-danger" th:if="${#fields.hasErrors('marks')}" th:errors="*{marks}"></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label d-block">Gender:</label>
+            <div class="form-check form-check-inline">
+                <input type="radio" th:field="*{gender}" value="true" id="male" class="form-check-input" />
+                <label for="male" class="form-check-label">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" th:field="*{gender}" value="false" id="female" class="form-check-input" />
+                <label for="female" class="form-check-label">Female</label>
+            </div>
+            <div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+        </div>
+        <div class="mb-3">
+            <label for="faculty" class="form-label">Faculty:</label>
+            <select th:field="*{faculty}" id="faculty" class="form-select">
+                <option th:each="faculty : ${faculties}" th:value="${faculty.key}" th:text="${faculty.value}"></option>
+            </select>
+            <div class="text-danger" th:if="${#fields.hasErrors('faculty')}" th:errors="*{faculty}"></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label d-block">Hobbies:</label>
+            <div th:each="hobby : ${hobbies}" class="form-check form-check-inline">
+                <input type="checkbox" th:field="*{hobbies}" th:value="${hobby.key}" id="hobby__${hobby.key}" class="form-check-input" />
+                <label th:attr="for='hobby__' + ${hobby.key}" th:text="${hobby.value}" class="form-check-label"></label>
+            </div>
+            <div class="text-danger" th:if="${#fields.hasErrors('hobbies')}" th:errors="*{hobbies}"></div>
+        </div>
+        <div class="mb-3">
+            <label for="avatar" class="form-label">Avatar:</label>
+            <input type="file" name="avatar" id="avatar" class="form-control" />
+        </div>
+        <div class="mb-3" th:if="${sv.avatarUrl != null}">
+            <img th:src="*{avatarUrl}" class="img-fluid" style="width: 100px; height: 100px" alt="...">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

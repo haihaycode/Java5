@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>bài 3</title>
+</head>
+<body>
+<form action="/addProduct" method="post">
+    <input name="name">
+    <input name="price">
+    <button>Save</button>
+</form>
+<ul>
+    <!-- Duyệt qua danh sách sản phẩm và hiển thị thông tin của mỗi sản phẩm -->
+    <li th:each="product : ${products}">
+        <ul>
+            <li th:text="${product != null ? (product.getName() == null ? '' : product.getName()) : ''}">?name</li>
+            <li th:text="${product != null ? (product.getPrice() == null ? '' : product.getPrice()) : ''}">?price</li>
+        </ul>
+    </li>
+</ul>
+
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+<form action="/ctrl/ok" method="post">
+    <button type="submit" formaction="/ctrl/m1">OK 1</button>
+    <button type="submit" formmethod="get" formaction="/ctrl/m2">OK 2</button>
+    <button type="submit" formaction="/ctrl/m3?x">OK 3</button>
+</form>
+Kết quả: <h1 th:text="${result}"></h1>
+</body>
+</html>
