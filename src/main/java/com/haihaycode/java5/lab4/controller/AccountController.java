@@ -4,6 +4,7 @@ import com.haihaycode.java5.lab4.Service.CookieService;
 import com.haihaycode.java5.lab4.Service.ParamService;
 import com.haihaycode.java5.lab4.Service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +31,6 @@ public class AccountController {
         boolean rm = paramService.getBoolean("remember", false);
 
         if (un.trim().equals("haipro1907") && pw.trim().equals("123")) {
-
             sessionService.set("username", un);
             if (rm) {
                 cookieService.add("user", un, 10);
