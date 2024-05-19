@@ -2,12 +2,11 @@ package com.haihaycode.java5.lab3.controller;
 
 import com.haihaycode.java5.lab3.model.Student;
 import jakarta.servlet.ServletContext;
-import jakarta.servlet.http.HttpServletRequest;
+
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.http.HttpRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,15 +14,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import java.io.File;
 import java.io.IOException;
-import java.net.http.HttpResponse;
+
 import java.util.HashMap;
-import java.util.Locale;
+
 import java.util.Map;
-import java.util.stream.Collectors;
+
 
 
 @Controller
@@ -44,7 +43,7 @@ public class StudentController {
     public String save(@Valid @ModelAttribute("sv") Student sv, BindingResult result,
                        @RequestParam("avatar") MultipartFile file, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("message","Vui lòng điền đầy đủ các trường bắt buộc");
+            model.addAttribute("message","Please fill out all required fields");
             model.addAttribute("messageType", "danger");
             return "lab3/student/form";
         }
@@ -56,11 +55,13 @@ public class StudentController {
                 if (!docsDir.exists()) {
                     docsDir.mkdirs();
                 }
+
+                assert avatarFileName != null;
                 File avatarFileLocation = new File(docsDir, avatarFileName);
                 file.transferTo(avatarFileLocation);
                 sv.setAvatarUrl("/docs/" + avatarFileName);
             } catch (IOException e) {
-                e.printStackTrace();
+
                 model.addAttribute("message", "File upload failed!");
                 model.addAttribute("messageType", "danger");
                 return "lab3/student/form";
