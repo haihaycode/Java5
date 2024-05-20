@@ -19,7 +19,7 @@ public class ProductController_lab5 {
 
     @GetMapping("/product/sort")
     public String sort(Model model,@RequestParam("field") Optional<String> field) {
-        Sort sort = Sort.by(Sort.Direction.DESC, field.orElse("price"));
+        Sort sort = Sort.by(Sort.Direction.ASC, field.orElse("price"));
         model.addAttribute("field", field.orElse("price").toUpperCase());
         List<Product> items = productDAO.findAll(sort);
         model.addAttribute("items", items);
