@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:fragment="table">
+    <table class="table table-bordered" >
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${items}" th:each="category : ${items}">
+            <td th:text="${category.getId()}"></td>
+            <td th:text="${category.getName()}"></td>
+            <td><a th:href="@{/category/edit/{id}(id=${category.getId()})}"class="btn-edit">Edit</a></td>
+        </tr>
+        <tr th:if="${items==null}">
+            <td colspan="3">
+            No data
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
