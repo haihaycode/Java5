@@ -3,6 +3,9 @@ package com.haihaycode.java5.lab5.controller;
 import com.haihaycode.java5.lab5.dao.ProductDAO;
 import com.haihaycode.java5.lab5.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,5 +28,11 @@ public class ProductController_lab5 {
         model.addAttribute("items", items);
         return "lab5/product/sort";
     }
-
+    @GetMapping("/product/page")
+    public String paginate(Model model ,@RequestParam("p") Optional<Integer> p) {
+        Pageable pageable = PageRequest.of(p.orElse(0), 3);
+        Page<Product> page = productDAO.findAll(pageable);
+        model.addAttribute("page", page);
+        return "lab5/product/page";
+    }
 }
