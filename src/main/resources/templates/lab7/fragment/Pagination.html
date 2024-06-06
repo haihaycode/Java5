@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Phân trang</title>
+</head>
+<body th:fragment="Pagination">
+<div class="flex justify-center" th:if="${page.totalElements > 0}">
+    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+        <a th:if="${page.number > 0}" th:href="@{/index(p=${page.number - 1}, keywords=${kw})}"
+           class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">Previous</a>
+        <span th:each="pageNum : ${#numbers.sequence(0, page.totalPages - 1)}">
+            <a th:href="@{/index(p=${pageNum}, keywords=${kw})}"
+               class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+               th:classappend="${pageNum == page.number} ? 'bg-gray-200' : ''" th:text="${pageNum + 1}">1</a>
+        </span>
+        <a th:if="${page.number < page.totalPages - 1}" th:href="@{/index(p=${page.number + 1}, keywords=${kw})}"
+           class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">Next</a>
+    </nav>
+</div>
+</body>
+</html>

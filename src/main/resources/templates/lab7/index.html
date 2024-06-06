@@ -3,25 +3,32 @@
       layout:decorate="~{lab7/layout}" xmlns:sec>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Trang chủ</title>
 </head>
 <body layout:fragment="content">
 
 <div class="container mx-auto px-6 py-8">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Product Card -->
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden" th:each="item : ${page.content}">
             <div class="bg-cover bg-center h-56 p-4" style="background-image: url('https://via.placeholder.com/150')">
             </div>
             <div class="p-4">
-                <p class="uppercase tracking-wide text-sm font-bold text-gray-700">Product Title</p>
-                <p class="text-gray-700">$19.99</p>
+                <p class="uppercase tracking-wide text-sm font-bold text-gray-700" th:text="${item.name}">Product Title</p>
+                <p class="text-gray-700" th:text="${item.price}">$19.99</p>
                 <button class="mt-2 bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600">Add to Cart</button>
             </div>
         </div>
+
+        <div th:if="${page.totalElements <=0}">
+            <p class="text-gray-700">Not data</p>
+        </div>
+
         <!-- Repeat above Product Card for more products -->
     </div>
 </div>
+
+<div th:replace="~{/lab7/fragment/Pagination :: Pagination}"></div>
 
 </body>
 </html>

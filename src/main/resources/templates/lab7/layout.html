@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Online</title>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Shopping Online</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
@@ -13,16 +13,16 @@
     <div class="container mx-auto px-6 py-3">
         <div class="flex items-center justify-between">
             <div class="text-xl font-semibold text-gray-700">
-                <a href="#" class="text-gray-800 hover:text-gray-600">Shop</a>
+                <a href="#" class="text-gray-800 hover:text-gray-600">Shopping Online </a>
             </div>
-            <div class="flex space-x-4">
-                <a th:href="@{index}" class="text-gray-800 hover:text-gray-600">Home</a>
-                <a th:href="@{about}" class="text-gray-800 hover:text-gray-600">About</a>
+            <div class="flex space-x-4 items-center justify-between">
+                <a th:href="@{/index}" class="text-gray-800 hover:text-gray-600">Home</a>
+                <a th:href="@{/about}" class="text-gray-800 hover:text-gray-600">About</a>
 
                 <div class="relative" id="categories-dropdown">
                     <button class="flex items-center text-gray-800 hover:text-gray-600 focus:outline-none">
                         <span>Categories</span>
-                        <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="ml-1 h-5 w-5 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
@@ -47,6 +47,13 @@
                         <a th:href="@{/account}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Account Management</a>
                     </div>
                 </div>
+
+                <form action="/index" th:action="@{/index}" method="get"
+                      class="flex justify-between items-center">
+                    <input name="keywords" th:value="${keywords}" placeholder="Search" class="w-3/4 py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500">
+                    <button type="submit" class="w-1/4 py-2 px-4 ml-3 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-green-600">Search</button>
+                </form>
+
             </div>
 
 
@@ -54,8 +61,10 @@
     </div>
 </nav>
 
-<!-- Product Grid -->
+<!--content-->
 <section layout:fragment="content"></section>
+<!--content-->
+
 <!-- Footer -->
 <footer class="bg-white shadow mt-8">
     <div class="container mx-auto px-6 py-4">

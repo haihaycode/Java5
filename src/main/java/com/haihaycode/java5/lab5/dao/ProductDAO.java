@@ -24,4 +24,6 @@ public interface ProductDAO extends JpaRepository<Product, Integer> {
 
         Page<Product> findByCreateDateBetween(Date before, Date after, Pageable pageable);
 
+
+
 }
