@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://wwww.thymeleaf.org" xmlns:layout=""
+      layout:decorate="~{lab7/layout}" xmlns:sec>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body layout:fragment="content">
+<!-- About Us Content -->
+<div class="container mx-auto px-6 py-8">
+    <div class="text-center">
+        <h1 class="text-3xl font-bold text-gray-800">About Us</h1>
+        <p class="mt-4 text-gray-600">Learn more about our journey and values.</p>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-800">Our Story</h2>
+            <p class="mt-4 text-gray-600">We started our journey in 2020 with the goal of providing the best products and services to our customers. Our dedication to quality and customer satisfaction has been the driving force behind our success.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-800">Our Values</h2>
+            <p class="mt-4 text-gray-600">We believe in integrity, transparency, and innovation. Our values guide everything we do, ensuring that we always put our customers first and strive to exceed their expectations.</p>
+        </div>
+    </div>
+
+    <div class="mt-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-800">Our Team</h2>
+            <p class="mt-4 text-gray-600">Our team consists of passionate and talented individuals who are dedicated to making your shopping experience the best it can be. We work hard to curate a selection of high-quality products and provide exceptional customer service.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

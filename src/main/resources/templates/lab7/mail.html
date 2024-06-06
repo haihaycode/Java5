@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 mt-5 border">
+            <form th:action="@{/mail/test}" method="post">
+                <div class="form-group mt-5 mb-3">
+                    <label for="to">To</label>
+                    <input type="text" class="form-control" name="to"
+                           id="to" placeholder="To">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="subject">Subject</label>
+                    <input type="text"
+                           class="form-control" id="subject" placeholder="Subject" name="subject">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="body">Body</label>
+                    <textarea class="form-control" id="body" rows="5" name="body"
+                              placeholder="Body"></textarea>
+                </div>
+                <button class="btn btn-primary">Send</button>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <div class="images">
+                <img alt="" th:src="@{/images/4952521.jpg}" style="width: 100%">
+            </div>
+        </div>
+    </div>
+</div>
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
