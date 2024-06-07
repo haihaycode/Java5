@@ -15,12 +15,12 @@
                 <a th:href="@{/index}" class="text-gray-800 hover:text-gray-600">Shopping Online </a>
             </div>
             <div class="flex space-x-4 items-center justify-between">
-                <a th:href="@{/index}" class="text-gray-800 hover:text-gray-600">Home</a>
-                <a th:href="@{/about}" class="text-gray-800 hover:text-gray-600">About</a>
+                <a th:href="@{/index}" class="text-gray-800 hover:text-gray-600" th:text="#{home}">Home</a>
+                <a th:href="@{/about}" class="text-gray-800 hover:text-gray-600" th:text="#{about}">About</a>
 
                 <div class="relative" id="categories-dropdown">
                     <button class="flex items-center text-gray-800 hover:text-gray-600 focus:outline-none">
-                        <span>Categories</span>
+                        <span th:text="#{Categories}">Categories</span>
                         <svg class="ml-1 h-5 w-5 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
@@ -33,19 +33,21 @@
                 </div>
                 <div class="relative" id="account-dropdown">
                     <button class="flex items-center text-gray-800 hover:text-gray-600 focus:outline-none">
-                        <span>Account</span>
+                        <span th:text="#{Account}">Account</span>
                         <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
                     <div class="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg hidden">
-                        <a th:href="@{/login}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:unless="${session.user}">Login</a>
-                        <a th:href="@{/mail/demo}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mailer</a>
-                        <a th:href="@{/register}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:unless="${session.user}">Register</a>
-                        <a th:href="@{/account}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user}">Account Management</a>
-                        <a th:href="@{/admin}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user != null and session.user.admin}">Admin Dashboard</a>
-                        <a th:href="@{/logout}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user}">Logout</a>
-
+                        <a th:href="@{/login}" th:text="#{login}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:unless="${session.user}">Login</a>
+                        <a th:href="@{/mail/demo}"th:text="#{Mailer}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mailer</a>
+                        <a th:href="@{/register}"  th:text="#{register}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:unless="${session.user}">Register</a>
+                        <a th:href="@{/account}"th:text="#{Account}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user}">Account Management</a>
+                        <a th:href="@{/admin}" th:text="#{Admin}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user != null and session.user.admin}">Admin Dashboard</a>
+                        <a th:href="@{/logout}" th:text="#{logout}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user}">Logout</a>
+                        <hr>
+                        <a href="?lang=en" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:text="#{English}">English</a>
+                        <a href="?lang=vi" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:text="#{Vietnamese}">Tiếng Việt</a>
                     </div>
                 </div>
                 <form action="/index" th:action="@{/index}" method="get"
