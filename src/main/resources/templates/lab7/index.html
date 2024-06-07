@@ -16,7 +16,7 @@
             <div class="p-4">
                 <p class="uppercase tracking-wide text-sm font-bold text-gray-700" th:text="${item.name}">Product Title</p>
                 <p class="text-gray-700" th:text="${item.price}">$19.99</p>
-                <button class="mt-2 bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600">Add to Cart</button>
+                <button class="mt-2 bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600" th:text="#{AddToCart}">Add to Cart</button>
             </div>
         </div>
 

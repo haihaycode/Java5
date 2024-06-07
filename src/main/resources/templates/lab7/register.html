@@ -9,7 +9,9 @@
 <body layout:fragment="content">
 <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg my-10 ">
     <h1 class="text-3xl font-bold mb-6">Register a new account</h1>
-
+    <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+        <span class="font-medium">hey !</span> Looks like you haven't logged into your account yet ? Login now .For the best experience.
+    </div>
     <form th:action="@{/register}" th:object="${user}" method="POST">
         <div class="mb-4">
             <label for="username" class="block text-gray-700">Username</label>

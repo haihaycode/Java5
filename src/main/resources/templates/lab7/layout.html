@@ -40,8 +40,10 @@
                     </button>
                     <div class="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg hidden">
                         <a th:href="@{/login}" th:text="#{login}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:unless="${session.user}">Login</a>
-                        <a th:href="@{/mail/demo}"th:text="#{Mailer}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mailer</a>
                         <a th:href="@{/register}"  th:text="#{register}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:unless="${session.user}">Register</a>
+                        <hr>
+                        <a th:href="@{/mail/demo}"th:text="#{Mailer}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mailer</a>
+                        <hr>
                         <a th:href="@{/account}"th:text="#{Account}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user}">Account Management</a>
                         <a th:href="@{/admin}" th:text="#{Admin}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user != null and session.user.admin}">Admin Dashboard</a>
                         <a th:href="@{/logout}" th:text="#{logout}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user}">Logout</a>
@@ -52,8 +54,8 @@
                 </div>
                 <form action="/index" th:action="@{/index}" method="get"
                       class="flex justify-between items-center">
-                    <input name="keywords" th:value="${keywords}" placeholder="Search" class="w-3/4 py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500">
-                    <button type="submit" class="w-1/4 py-2 px-4 ml-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Search</button>
+                    <input name="keywords" th:value="${keywords}" th:placeholder="#{Search}" class="w-3/4 py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500">
+                    <button type="submit" class="w-1/4 py-2 px-4 ml-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600" th:text="#{Search}">Search</button>
                 </form>
             </div>
         </div>
