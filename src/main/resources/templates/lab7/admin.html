@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout=""
+      layout:decorate="~{lab7/layout}" xmlns:sec>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body  layout:fragment="content">
+<div class="container mx-auto p-10 py-8">
+    <h1 class="text-3xl font-bold mb-8">Admin Panel</h1>
+
+    <!-- User Table -->
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded mb-4">
+            <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <th class="py-3 px-6 text-left">Username</th>
+                <th class="py-3 px-6 text-left">Email</th>
+                <th class="py-3 px-6 text-left">Role</th>
+                <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+            <!-- User data will be populated here -->
+            <tr th:each="account : ${accounts}">
+                <td class="py-3 px-6 text-left whitespace-nowrap" th:text="${account.username}"></td>
+                <td class="py-3 px-6 text-left" th:text="${account.email}"></td>
+                <td class="py-3 px-6 text-left" th:text="${account.isAdmin() ? 'Admin' : 'User'}"></td>
+
+                <td class="py-3 px-6 text-center">
+                    <a href="#" class="text-blue-600 hover:underline">Edit</a>
+                    <span class="text-gray-400 mx-2">|</span>
+                    <a href="#" class="text-red-600 hover:underline">Delete</a>
+                </td>
+            </tr>
+            <!-- More user rows can be added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add New User Button -->
+    <div class="flex justify-end">
+        <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500">Add New User</a>
+    </div>
+</div>
+</body>
+</html>

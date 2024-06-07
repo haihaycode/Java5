@@ -1,9 +1,6 @@
 package com.haihaycode.java5.lab5.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,4 +24,7 @@ public class Account implements Serializable {
     boolean admin;
     @OneToMany(mappedBy = "account")
     List<Order> orders;
+
+    @Transient
+    String ConfirmPassword;
 }

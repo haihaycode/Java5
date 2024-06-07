@@ -7,13 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-
 <!-- Navbar -->
 <nav class="bg-white shadow">
     <div class="container mx-auto px-6 py-3">
         <div class="flex items-center justify-between">
             <div class="text-xl font-semibold text-gray-700">
-                <a href="#" class="text-gray-800 hover:text-gray-600">Shopping Online </a>
+                <a th:href="@{/index}" class="text-gray-800 hover:text-gray-600">Shopping Online </a>
             </div>
             <div class="flex space-x-4 items-center justify-between">
                 <a th:href="@{/index}" class="text-gray-800 hover:text-gray-600">Home</a>
@@ -32,7 +31,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="relative" id="account-dropdown">
                     <button class="flex items-center text-gray-800 hover:text-gray-600 focus:outline-none">
                         <span>Account</span>
@@ -41,25 +39,25 @@
                         </svg>
                     </button>
                     <div class="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg hidden">
-                        <a th:href="@{/login}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Login</a>
-                        <a th:href="@{/register}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Register</a>
-                        <a th:href="@{/logout}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
-                        <a th:href="@{/account}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Account Management</a>
+                        <a th:href="@{/login}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:unless="${session.user}">Login</a>
+                        <a th:href="@{/mail/demo}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mailer</a>
+                        <a th:href="@{/register}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:unless="${session.user}">Register</a>
+                        <a th:href="@{/account}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user}">Account Management</a>
+                        <a th:href="@{/admin}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user != null and session.user.admin}">Admin Dashboard</a>
+                        <a th:href="@{/logout}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" th:if="${session.user}">Logout</a>
+
                     </div>
                 </div>
-
                 <form action="/index" th:action="@{/index}" method="get"
                       class="flex justify-between items-center">
                     <input name="keywords" th:value="${keywords}" placeholder="Search" class="w-3/4 py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500">
-                    <button type="submit" class="w-1/4 py-2 px-4 ml-3 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:bg-green-600">Search</button>
+                    <button type="submit" class="w-1/4 py-2 px-4 ml-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Search</button>
                 </form>
-
             </div>
-
-
         </div>
     </div>
 </nav>
+<div th:replace="~{/lab7/fragment/notification :: notification}"></div>
 
 <!--content-->
 <section layout:fragment="content"></section>
@@ -77,6 +75,7 @@
         </div>
     </div>
 </footer>
+
 <script>
     document.addEventListener('click', function(event) {
         const accountDropdownButton = document.querySelector('#account-dropdown button');

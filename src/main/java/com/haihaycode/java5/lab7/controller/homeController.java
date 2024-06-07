@@ -2,6 +2,7 @@ package com.haihaycode.java5.lab7.controller;
 
 
 import com.haihaycode.java5.lab4.Service.SessionService;
+import com.haihaycode.java5.lab5.dao.AccountDAO;
 import com.haihaycode.java5.lab5.dao.ProductDAO;
 import com.haihaycode.java5.lab5.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class homeController {
     @Autowired
     ProductDAO productDAO;
     @Autowired
+    AccountDAO accountDAO;
+    @Autowired
     SessionService session;
 
     @GetMapping("/index")  public String index(Model model, @RequestParam("keywords") Optional<String> kw,
@@ -33,4 +36,9 @@ public class homeController {
         return "lab7/index";
     }
     @GetMapping("/about")  public String about() {   return "lab7/about";  }
+    @GetMapping("/admin")  public String admin(Model model) {
+        model.addAttribute("accounts",accountDAO.findAll());
+        return "lab7/admin";
+    }
+
 }

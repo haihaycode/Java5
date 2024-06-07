@@ -15,7 +15,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(globalInterceptor).addPathPatterns("/index", "/about")//cho phép chia sẻ với các req
+        registry.addInterceptor(globalInterceptor).addPathPatterns("/index", "/about","/register","/login","/account")//cho phép chia sẻ với các req
                 .excludePathPatterns("/assets/**","/mail/mail", "/admin/home/index");// ngoại trừ các req
         registry.addInterceptor(authInterceptor)
                 .addPathPatterns("/account/**", "/admin/**")

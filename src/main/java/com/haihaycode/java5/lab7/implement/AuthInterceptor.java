@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Service
 public class AuthInterceptor implements HandlerInterceptor {
@@ -29,7 +30,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 
         if (error.length() > 0) { // If there's an error
             session.set("security-uri", uri);
-            response.sendRedirect("/account/login?error=" + error); // Redirect to login
+
+            response.sendRedirect("/login?error=" + error); // Redirect to login
             return false;
         }
         return true;

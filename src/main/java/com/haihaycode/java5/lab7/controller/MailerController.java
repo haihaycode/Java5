@@ -27,8 +27,10 @@ public class MailerController {
         try {
             mailer.queue(to, subject, body);
             System.out.println("Xong");
+            model.addAttribute("success","Send mail Successful");
             return "lab7/mail";
         } catch (Exception e) {
+            model.addAttribute("error","Send mail fail");
             return e.getMessage();
         }
     }
